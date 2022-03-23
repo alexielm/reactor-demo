@@ -12,3 +12,16 @@
         background: red;
     }
 }
+
+
+.singleComment {
+    padding: 10px 0px 0px 0px;
+}
+
+    .singleComment .commentTitle  {
+        font-size: 120%;
+        font-weight: bold;
+    }
+
+    .singleComment .commentBody {
+    }

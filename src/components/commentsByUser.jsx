@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Menu, Dropdown, Comment, PageHeader } from 'antd';
+import { Menu, Dropdown, Comment } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
-
 import { forumData } from "../data/dataSet";
+import SingleComment from "./singleComment";
 
 class CommentsByUser extends React.Component {
 
@@ -29,10 +29,7 @@ class CommentsByUser extends React.Component {
     commentsByUser = () =>
         this.data.comments
             .filter(comment => comment.userId === this.state.selectedUserId)
-            .map((comment, commentIndex) => <Comment key={commentIndex}
-                author={this.userToFullName(this.data.users.find(user => user.userId === comment.userId))}
-                content={<PageHeader title={comment.title} subTitle={comment.body} />}
-            />);
+            .map((comment, commentIndex) => <SingleComment key={commentIndex } title={comment.title} body={comment.body} />);
 
     userSelector = () =>
         <Dropdown overlay={this.usersList}>

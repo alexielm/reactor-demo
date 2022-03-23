@@ -19,16 +19,16 @@ class UsersList extends React.Component {
                         title="Change the name"
                         content={<div>
                             <div>
-                                First Name: <Input value={user.firstName} onChange={e => user.firstName = e.target.value} />
+                                First Name: <Input defaultValue={user.firstName} onChange={e => user.firstName = e.target.value} />
                             </div>
                             <br />
                             <div>
-                                Last Name: <Input value={user.lastName} onChange={e => user.lastName = e.target.value} />
+                                Last Name: <Input defaultValue={user.lastName} onChange={e => user.lastName = e.target.value} />
                             </div>
                             <br />
                             <ViewControl visible={!this.data.comments.some(comment => comment.userId === user.userId)}>
                                 <div>
-                                    <Button danger onClick={() => this.data.users = this.data.users.filter(u => u.userId != user.userId)}>Delete</Button>
+                                    <Button danger onClick={() => this.data.users = this.data.users.filter(u => u.userId !== user.userId)}>Delete</Button>
                                 </div>
                             </ViewControl>
                         </div>}

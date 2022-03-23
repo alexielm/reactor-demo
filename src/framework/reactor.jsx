@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export function useRod(reactor) {
+export function useRod(reactor, subscriberName = "") {
     if (!(reactor instanceof Reactor)) {
         throw "reactor should be a Reactor Class";
     }
@@ -8,7 +8,7 @@ export function useRod(reactor) {
     const [_, setValue] = useState(0);
     let forceUpdate = () => setValue(value => value + 1);
     let [reactorRod] = useState(() => {
-        let subscriber = new Reactor.FunctionalComponentSubject(forceUpdate);
+        let subscriber = new Reactor.FunctionalComponentSubject(forceUpdate, subscriberName);
         let data = reactor.useRod(subscriber);
         subscriber.componentDidMount();
         return {
@@ -28,15 +28,26 @@ export default class Reactor {
 
     static FunctionalComponentSubject = class {
 
-        constructor(forceUpdate) {
+        constructor(forceUpdate, subscriberName) {
             this.forceUpdate = forceUpdate;
+            this.name = subscriberName;
         }
 
         render = () => { };
     }
 
     useRod = (subscriber) => {
-        if (!(subscriber instanceof React.Component) && !(subscriber instanceof Reactor.FunctionalComponentSubject)) {
+        let subscriberName = (() => {
+            if (subscriber instanceof React.Component) {
+                return subscriber.constructor.name;
+            }
+            if (subscriber instanceof Reactor.FunctionalComponentSubject) {
+                return subscriber.name;
+            }
+            return null;
+        })();
+
+        if (!subscriberName) {
             throw "Subscriber should be a React Component or FunctionalComponentSubject";
         }
 
@@ -71,6 +82,7 @@ export default class Reactor {
             }
 
             subscriber.render = () => {
+                //console.log(`render:${subscriberName}`);
                 subscriberRegistry.reacting = true;
                 subscriberRegistry.valuesUsed = [];
                 setTimeout(() => subscriberRegistry.reacting = false);

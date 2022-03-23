@@ -2,10 +2,9 @@ import React from "react";
 import { forumData } from "../data/dataSet";
 import { useRod } from "../framework/reactor";
 
-const SummaryFunc = (props) => {
+export default (props) => {
 
-    let data = useRod(forumData);
-
+    let data = useRod(forumData, "summaryFunc");
 
     return <div>
         <div>
@@ -16,5 +15,3 @@ const SummaryFunc = (props) => {
         </div>
     </div>;
 }
-
-export default SummaryFunc;
