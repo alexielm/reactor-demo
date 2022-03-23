@@ -1,0 +1,14 @@
+.main {
+    padding: 10px;
+}
+
+
+.blink {
+    animation: blinker 250ms ease-in-out;
+}
+
+@keyframes blinker {
+    50% {
+        background: red;
+    }
+}
