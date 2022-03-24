@@ -28,26 +28,16 @@ export default class Reactor {
 
     static FunctionalComponentSubject = class {
 
-        constructor(forceUpdate, subscriberName) {
+        constructor(forceUpdate, displayName) {
             this.forceUpdate = forceUpdate;
-            this.name = subscriberName;
+            this.displayName = displayName;
         }
 
         render = () => { };
     }
 
     useRod = (subscriber) => {
-        let subscriberName = (() => {
-            if (subscriber instanceof React.Component) {
-                return subscriber.constructor.name;
-            }
-            if (subscriber instanceof Reactor.FunctionalComponentSubject) {
-                return subscriber.name;
-            }
-            return null;
-        })();
-
-        if (!subscriberName) {
+        if (!subscriber instanceof React.Component && !subscriber instanceof Reactor.FunctionalComponentSubject) {
             throw "Subscriber should be a React Component or FunctionalComponentSubject";
         }
 
@@ -82,7 +72,7 @@ export default class Reactor {
             }
 
             subscriber.render = () => {
-                //console.log(`render:${subscriberName}`);
+                console.log(`render:${subscriber.displayName}`);
                 subscriberRegistry.reacting = true;
                 subscriberRegistry.valuesUsed = [];
                 setTimeout(() => subscriberRegistry.reacting = false);

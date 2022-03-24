@@ -9,6 +9,7 @@ import CommentsByUser from "./commentsByUser";
 import CommentsByIndex from "./commentsByIndex";
 
 class Main extends React.Component {
+    displayName = "Main";
 
     render() {
         return <div className="main">

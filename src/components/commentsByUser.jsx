@@ -7,6 +7,7 @@ import { forumData } from "../data/dataSet";
 import SingleComment from "./singleComment";
 
 class CommentsByUser extends React.Component {
+    displayName = "CommentsByUser";
 
     data = forumData.useRod(this);
 

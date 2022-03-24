@@ -8,6 +8,7 @@ import SingleComment from "./singleComment";
 const { TextArea } = Input;
 
 class CommentsByIndex extends React.Component {
+    displayName = "CommentsByIndex";
 
     data = forumData.useRod(this);
 

@@ -7,6 +7,7 @@ import ViewControl from "../viewControllers/viewControl";
 import { forumData } from "../data/dataSet";
 
 class UsersList extends React.Component {
+    displayName = "UsersList";
 
     data = forumData.useRod(this);
 

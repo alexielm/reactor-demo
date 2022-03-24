@@ -3,6 +3,7 @@ import React from "react";
 import { forumData } from "../data/dataSet";
 
 class Summary extends React.Component {
+    displayName = "Summary";
 
     data = forumData.useRod(this);
 
