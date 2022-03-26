@@ -5,3 +5,7 @@ The components registered to this global data set will be automatically schedule
 
 This repository contains the reactor code on the *[src/framework/reactor.js](https://github.com/alexielm/reactor-demo/blob/main/src/framework/reactor.jsx)* file
 
+Online demo at <http://nexus-solutions.org/reactorDemo/>
+Open Developers Tool Console for notifications about Components Re-Render
+
+![Overall Flow Diagram](https://raw.githubusercontent.com/alexielm/reactor-demo/main/documentation/reactor-demo-chart.png)
