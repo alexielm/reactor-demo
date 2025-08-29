@@ -9,7 +9,6 @@
     "antd": "^4.12.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -36,5 +35,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "."
+  "homepage": ".",
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
